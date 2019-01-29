@@ -1,0 +1,33 @@
+$nofound_img: url('../../../images/nofound.png');
+
+.container {
+  &-column {
+    display: flex;
+    flex-direction: column;
+  }
+  &-row {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.errsearch {
+  display: flex;
+  justify-content: center;
+  &__text {
+    width: 398px;
+    height: 189px;
+    background: $nofound_img no-repeat center;
+    &-article {
+      color: #0366D6;
+      font-size: 3.6rem;
+      font-weight: bold;
+      margin: 60px 0 0 30px;
+    }
+    &-describe {
+      color: #000000;
+      font-weight: normal;
+      font-size: 2.3rem;
+    }
+  }
+}

@@ -7,17 +7,10 @@
     justify-content: flex-end;
     border-bottom: 1px solid #E1E4E8;
     &-block {
-      color: #E0E0E0;
       margin: 27px 12px 0 0;
-      &:active {
-        color: #3C4146;
-      }
     }
     &-list {
       margin-top: 27px;
-      &:focus {
-        color: #3C4146;
-      }
     }
   }
   &-projects {
@@ -38,10 +31,10 @@
   }
 }
 
-.active {
+.activeIcon {
   color: #3C4146;
 }
 
-.not-active {
+.not-activeIcon {
   color: #E0E0E0;
 }

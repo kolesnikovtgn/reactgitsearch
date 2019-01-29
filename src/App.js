@@ -14,8 +14,8 @@ class App extends Component {
           <div className="header container-row">
             <div className="header__logo container-row">
                <div className="header__logo-image">
-                 <img className="header__logo-image-cat" src={logo} alt={true}/>
-                 <img className="header__logo-image-search" src={logo_search} alt={true}/>
+                 <img className="header__logo-image-cat" src={logo} alt="true"/>
+                 <img className="header__logo-image-search" src={logo_search} alt="true"/>
                </div>
                <div className="header__logo-text container-column">
                  <div className="header__logo-text-top">GitHub</div>
@@ -23,8 +23,8 @@ class App extends Component {
                </div>
             </div>
             <div className="header__nav container-row">
-                <div class="header__nav-search"><NavLink to="/search" className='navlink' activeClassName="active">Search</NavLink></div>
-                <div class="header__nav-mylist"><NavLink to="/mylist" className='navlink' activeClassName="active">My List</NavLink></div>
+                <div className="header__nav-search"><NavLink to="/search" className='navlink' activeClassName="active">Search</NavLink></div>
+                <div className="header__nav-mylist"><NavLink to="/mylist" className='navlink' activeClassName="active">My List</NavLink></div>
             </div>
           </div>
             <Switch>
@@ -32,8 +32,8 @@ class App extends Component {
               <Route exact path="/search" component={ Search } />
               <Route path="/mylist" component={ MyList } />
             </Switch>
-          <div class=" footer">
-            <div class=" footer__text">copyright @lodossteam 2018</div>
+          <div className="footer">
+            <div className="footer__text">copyright @lodossteam 2018</div>
           </div>
         </div>
         </Router>

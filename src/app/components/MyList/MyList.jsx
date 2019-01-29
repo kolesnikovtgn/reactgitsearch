@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import './MyList.scss';
+import List from '../List/List';
 
 class MyList extends Component {
     render() {
         return (
-            <h1 className='temp'>My List</h1>
+            <div className="mainMyList">
+                <p className="mainMyList__text">My List</p>
+                <List></List>
+            </div>
+
         );
     }
 }

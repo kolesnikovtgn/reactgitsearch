@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import './Search.scss';
 import MyRecord from '../MyRecord/MyRecord';
+import { connect } from  'F:\\lodoss\\reactgitsearch\\node_modules\\react-redux';
+import { getRepositoriesAction } from '../../../store/action';
 
 class Search extends Component {
+  searchRequest = () => {
+    this.props.onGetRepositories();
+  };
     render() {
         return (
             <div className="mainSearch">
@@ -17,16 +22,34 @@ class Search extends Component {
                 </select>
                 <input className="search__input" placeholder="Type here for search" type="text"/>
                 <div className="q">
-                  <button className="search__btn"><p className="search__btn-text">SEARCH</p></button>
+                  <button className="search__btn" onClick={this.searchRequest}><p className="search__btn-text">SEARCH</p></button>
                 </div>
               </div>
+              {this.props.name}
+              {this.props.description}
                 <MyRecord></MyRecord>
-                {/*<app-list *ngIf="!errorSearch"></app-list>*/}
-                    {/*<app-nofound *ngIf="errorSearch"></app-nofound>*/}
             </div>
 
         );
     }
 }
 
-export default Search;
+function mapStateToProps(state) {
+  return {
+    id: state.id,
+    name: state.name,
+    description: state.description,
+    stargazers_count: state.stargazers_count,
+    myList: state.myList
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onGetRepositories: () => {
+      dispatch(getRepositoriesAction())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

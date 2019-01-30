@@ -14,27 +14,27 @@ class Line extends Component {
                 </div>
                 <div className="project__text container-column">
                     <div className="project__text-name">
-                        NameRepositories
+                        {this.props.data&&this.props.data.name}
                     </div>
                     <div className="project__text-describe">
-                        DescribeOfRepositories
+                        {this.props.data&&this.props.data.description}
                     </div>
                     <div className="project__text-taglist container-row">
                          <div className="project__text-taglist-tag">
-                             LangInSearch
+                             javacript
                          </div>
                          <div className="project__text-taglist-tag">
-                             TextInSearch
+                             cms
                          </div>
                     </div>
                 </div>
                 <div className="project__rating container-column">
                     <div className="project__rating-block container-row">
                         <img  className="project__rating-block-img" src={star} alt="true"/>
-                        <div className="project__rating-block-stars">CoutnStars</div>
+                        <div className="project__rating-block-stars">{this.props.data&&this.props.data.stargazers_count}</div>
                     </div>
                 <div className="project__rating-language">
-                    LAnguageInProject
+                    {this.props.data&&this.props.data.name}
                 </div>
                 </div>
             </div>

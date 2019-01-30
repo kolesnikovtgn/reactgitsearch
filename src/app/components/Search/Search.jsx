@@ -1,8 +1,29 @@
 import React, { Component } from 'react';
 import './Search.scss';
-import MyRecord from '../MyRecord/MyRecord';
+import { connect } from  '../../../../node_modules/react-redux';
+import { getRepositoriesAction } from '../../../store/action';
+import List from "../List/List";
 
 class Search extends Component {
+
+  // constructor(props) {
+  //   super(props);
+  //
+  //     this.state = {
+  //         repositories: []
+  //     };
+  // }
+
+  componentDidMount() {
+      // fetch(`https://api.github.com/search/repositories?q=cms+language:javascript`)
+      //     .then(response => response.json())
+      //     .then(data => { this.setState({ repositories: data.items }); console.log('this state is ', this.state); });
+
+  }
+
+  searchRequest = () => {
+    this.props.onGetRepositories();
+  };
     render() {
         return (
             <div className="mainSearch">
@@ -17,16 +38,33 @@ class Search extends Component {
                 </select>
                 <input className="search__input" placeholder="Type here for search" type="text"/>
                 <div className="q">
-                  <button className="search__btn"><p className="search__btn-text">SEARCH</p></button>
+                  <button className="search__btn" onClick={this.searchRequest}><p className="search__btn-text">SEARCH</p></button>
                 </div>
               </div>
-                <MyRecord></MyRecord>
-                {/*<app-list *ngIf="!errorSearch"></app-list>*/}
-                    {/*<app-nofound *ngIf="errorSearch"></app-nofound>*/}
+                {/*<ul>*/}
+                    {/*{this.props.userData&&this.props.userData.map((el) =>*/}
+                        {/*<div key={el.id}>*/}
+                            {/*{el.name}*/}
+                        {/*</div>*/}
+                    {/*)}*/}
+                {/*</ul>*/}
+                <List></List>
             </div>
 
         );
     }
 }
 
-export default Search;
+function mapStateToProps(state) {
+  return { userData: state.userData.items  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onGetRepositories: () => {
+      dispatch(getRepositoriesAction())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -3,22 +3,28 @@ import './Block.scss';
 import star from '../../../images/star.png';
 
 class Block extends Component {
+    // constructor(props){
+    //     super(props);
+    //     this.state = {data: this.props.data};
+    // }
     render() {
+      //  const {name, description, stargazers_count} = this.state;
+
         return (
             <div className="prj container-column">
                 <div className="prj__rating container-row">
-                    <div className="prj__rating-language">LAnguage</div>
+                    <div className="prj__rating-language">{this.props.data&&this.props.data.name}</div>
                     <div className="prj__rating-block container-row">
                         <img className="prj__rating-block-img" src={star} alt="true" />
-                            <div className="prj__rating-block-stars">countStar</div>
+                            <div className="prj__rating-block-stars">{this.props.data&&this.props.data.stargazers_count}</div>
                     </div>
                 </div>
                 <div className="prj__text container-column">
                     <div className="prj__text-name">
-                       NameRepositories
+                        {this.props.data&&this.props.data.name}
                     </div>
                     <div className="prj__text-describe">
-                       DescriptionOfProject
+                        {this.props.data&&this.props.data.description}
                     </div>
                     <div className="prj__text-taglist container-row">
                         <div className="prj__text-taglist-tag">

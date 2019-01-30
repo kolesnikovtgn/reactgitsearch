@@ -5,8 +5,13 @@ import star from '../../../images/star.png';
 class Block extends Component {
     // constructor(props){
     //     super(props);
-    //     this.state = {data: this.props.data};
+    //
     // }
+
+    // changeMyListStatus(id) {
+    //     console.log('this id is', id);
+    // }
+
     render() {
       //  const {name, description, stargazers_count} = this.state;
 
@@ -37,7 +42,7 @@ class Block extends Component {
     </div>
         <div className="prj__button container-column">
             {this.props.data&&this.props.data.myList ? <button className="prj__button-delete"><p className="prj__button-delete-text"> REMOVE FROM LIST</p></button>
-                : <button className="prj__button-add"><p className="prj__button-add-text">ADD TO LIST</p></button> }
+                : <button className="prj__button-add"><p className="prj__button-add-text" onClick={this.props.changeMyListStatus()}>ADD TO LIST</p></button> }
     </div>
     </div>
 

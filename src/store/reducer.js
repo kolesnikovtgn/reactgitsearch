@@ -1,5 +1,6 @@
 import {
-  GET_REPOSITORIES
+  GET_REPOSITORIES,
+  CHANGE_MYLIST_STATUS
 } from './action';
 
 const initialState = {
@@ -32,6 +33,12 @@ export default function githubApp(state = initialState, action) {
   switch (action.type) {
     case GET_REPOSITORIES:
       return { ...state, userData: action.payload };
+      case CHANGE_MYLIST_STATUS:
+      return {
+        ...state,
+        userData: state.userData.map(item => ((item.id === action.payload)
+          ? {...item, myList: !item.myList } : item)),
+      };
     default:
       return state;
   }

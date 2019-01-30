@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './List.scss';
 import Block from '../Block/Block';
 import Line from '../Line/Line'
+import { connect } from  '../../../../node_modules/react-redux';
 
 class List extends Component {
     constructor(props) {
@@ -22,13 +23,6 @@ class List extends Component {
     render() {
         const isTypeProjects = this.state.isBlockType;
 
-        let renderType = null;
-
-        if (isTypeProjects) {
-            renderType = <Block></Block>
-        } else {
-            renderType = <Line></Line>
-        }
         return (
             <div className="mainList">
               <div className="mainList__menu">
@@ -40,7 +34,8 @@ class List extends Component {
                 </span>
               </div>
             <div className="mainList-projects">
-                {renderType}
+                { isTypeProjects ? this.props.userData&&this.props.userData.map((el) => <Block key={el.id} data={el}></Block>)
+                    : this.props.userData&&this.props.userData.map((el) => <Line key={el.id} data={el}></Line>) }
             </div>
             </div>
 
@@ -48,5 +43,18 @@ class List extends Component {
     }
 }
 
-export default List;
+function mapStateToProps(state) {
+    return { userData: state.userData.items  }
+}
+
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         onGetRepositories: () => {
+//             dispatch(getRepositoriesAction())
+//         }
+//     }
+// }
+
+
+export default connect(mapStateToProps)(List);
 

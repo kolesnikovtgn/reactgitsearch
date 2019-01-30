@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './Search.scss';
-import MyRecord from '../MyRecord/MyRecord';
-// import { bindActionCreators } from '../../../../node_modules/redux';
 import { connect } from  '../../../../node_modules/react-redux';
 import { getRepositoriesAction } from '../../../store/action';
-// import * as pageActions from '../../../store/action';
+import List from "../List/List";
 
 class Search extends Component {
 
@@ -24,12 +22,9 @@ class Search extends Component {
   }
 
   searchRequest = () => {
-      console.log('before func', this.props);
     this.props.onGetRepositories();
-      console.log('after func', this.props);
   };
     render() {
-        // const { repositories } = this.state;
         return (
             <div className="mainSearch">
               <div className="search container-row">
@@ -47,15 +42,13 @@ class Search extends Component {
                 </div>
               </div>
                 {/*<ul>*/}
-                    {/*{repositories.map(el =>*/}
-                        {/*<li key={el.id}>*/}
-                            {/*{el.name} {el.description} {el.myList}*/}
-                        {/*</li>*/}
+                    {/*{this.props.userData&&this.props.userData.map((el) =>*/}
+                        {/*<div key={el.id}>*/}
+                            {/*{el.name}*/}
+                        {/*</div>*/}
                     {/*)}*/}
                 {/*</ul>*/}
-              {this.props.name}
-              {this.props.description}
-                <MyRecord></MyRecord>
+                <List></List>
             </div>
 
         );
@@ -63,20 +56,8 @@ class Search extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    id: state.id,
-    name: state.name,
-    description: state.description,
-    stargazers_count: state.stargazers_count,
-    myList: state.myList
-  }
+  return { userData: state.userData.items  }
 }
-
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         pageActions: bindActionCreators(pageActions, dispatch)
-//     }
-// }
 
 function mapDispatchToProps(dispatch) {
   return {

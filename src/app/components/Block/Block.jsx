@@ -28,16 +28,16 @@ class Block extends Component {
                     </div>
                     <div className="prj__text-taglist container-row">
                         <div className="prj__text-taglist-tag">
-                        LanguageOfSearch
+                        Language
                     </div>
                     <div className="prj__text-taglist-tag">
-                        StringOfSearch
+                        cms
                 </div>
             </div>
     </div>
         <div className="prj__button container-column">
-            <button className="prj__button-add"><p className="prj__button-add-text">ADD TO LIST</p></button>
-        <button className="prj__button-delete"><p className="prj__button-delete-text"> REMOVE FROM LIST</p></button>
+            {this.props.data&&this.props.data.myList ? <button className="prj__button-delete"><p className="prj__button-delete-text"> REMOVE FROM LIST</p></button>
+                : <button className="prj__button-add"><p className="prj__button-add-text">ADD TO LIST</p></button> }
     </div>
     </div>
 

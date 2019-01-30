@@ -8,8 +8,8 @@ class Line extends Component {
             <div className="project container-row">
                 <div className="project__checkimage">
                     <div className="project__checkimage-square">
-                        <div className="project__checkimage-image enable"> </div>
-                    <div className="project__checkimage-image disable"> </div>
+                        { this.props.data&&this.props.data.myList ? <div className="project__checkimage-image enable"> </div>
+                            : <div className="project__checkimage-image disable"> </div> }
                     </div>
                 </div>
                 <div className="project__text container-column">

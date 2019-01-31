@@ -3,14 +3,12 @@ import './List.scss';
 import Block from '../Block/Block';
 import Line from '../Line/Line'
 import { connect } from  '../../../../node_modules/react-redux';
-// import CHANGE_MYLIST_STATUS from '../../../store/action';
 
 class List extends Component {
     constructor(props) {
         super(props);
         this.handleBlockClick = this.handleBlockClick.bind(this);
         this.handleLineClick = this.handleLineClick.bind(this);
-        this.changeMyListStatus = this.changeMyListStatus.bind(this);
         this.state = {isBlockType: true};
     }
 
@@ -21,11 +19,6 @@ class List extends Component {
     handleLineClick() {
         this.setState({isBlockType: false});
     }
-
-    changeMyListStatus = () => {
-        // this.props.onChangeStatus(id);
-        console.log('this id qweqweqweqweqweqweqweqweqweqweqweqw');
-    };
 
     render() {
         const isTypeProjects = this.state.isBlockType;
@@ -41,8 +34,8 @@ class List extends Component {
                 </span>
               </div>
             <div className="mainList-projects">
-                { isTypeProjects ? this.props.userData&&this.props.userData.map((el) => <Block key={el.id} data={el} changeMyListStatus={this.changeMyListStatus} ></Block>)
-                    : this.props.userData&&this.props.userData.map((el) => <Line key={el.id} data={el}></Line>) }
+              { isTypeProjects ? this.props.userData&&this.props.userData.map((el) => <Block key={el.id} data={el}></Block>)
+                : this.props.userData&&this.props.userData.map((el) => <Line key={el.id} data={el}></Line>) }
             </div>
             </div>
 
@@ -51,17 +44,8 @@ class List extends Component {
 }
 
 function mapStateToProps(state) {
-    return { userData: state.userData.items  }
+    return { userData: state.userData  }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        onChangeStatus: (id) => {
-            dispatch({type: 'CHANGE_MYLIST_STATUS', payload: id})
-        }
-    }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default connect(mapStateToProps)(List);
 

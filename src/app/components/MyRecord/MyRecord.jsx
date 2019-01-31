@@ -36,10 +36,8 @@ class MyRecord extends Component {
                 </span>
                 </div>
                 <div className="mainMyRecord-projects">
-                    {/*{ isTypeProjects ? <Block></Block> : <Line></Line> }*/}
-                    {/*{this.props.userData&&this.props.userData.map((el) => <Block key={el.id}></Block>)}*/}
-                    { isTypeProjects ? this.props.userData&&this.props.userData.map((el) => <Block key={el.id} data={el}></Block>)
-                        : this.props.userData&&this.props.userData.map((el) => <Line key={el.id} data={el}></Line>) }
+                    { isTypeProjects ? this.props.userData&&this.props.userData.filter(item => item.myList === true).map((el) => <Block key={el.id} data={el}></Block>)
+                        : this.props.userData&&this.props.userData.filter(item => item.myList === true).map((el) => <Line key={el.id} data={el}></Line>) }
                 </div>
             </div>
 
@@ -48,16 +46,8 @@ class MyRecord extends Component {
 }
 
 function mapStateToProps(state) {
-    return { userData: state.userData.items  }
+    return { userData: state.userData  }
 }
-
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         onGetRepositories: () => {
-//             dispatch(getRepositoriesAction())
-//         }
-//     }
-// }
 
 export default connect(mapStateToProps)(MyRecord);
 

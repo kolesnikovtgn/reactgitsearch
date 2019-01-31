@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import './Block.scss';
 import star from '../../../images/star.png';
+import { connect } from  '../../../../node_modules/react-redux';
 
 class Block extends Component {
-    // constructor(props){
-    //     super(props);
-    //
-    // }
-
-    // changeMyListStatus(id) {
-    //     console.log('this id is', id);
-    // }
 
     render() {
       //  const {name, description, stargazers_count} = this.state;
+      // const {changeMyListStatus} = this.props;
+      //     const {id} = this.props.data;
 
         return (
             <div className="prj container-column">
@@ -41,8 +36,8 @@ class Block extends Component {
             </div>
     </div>
         <div className="prj__button container-column">
-            {this.props.data&&this.props.data.myList ? <button className="prj__button-delete"><p className="prj__button-delete-text"> REMOVE FROM LIST</p></button>
-                : <button className="prj__button-add"><p className="prj__button-add-text" onClick={this.props.changeMyListStatus()}>ADD TO LIST</p></button> }
+            {this.props.data&&this.props.data.myList ? <button className="prj__button-delete" onClick={() => this.props.onChangeStatus(this.props.data.id)}><p className="prj__button-delete-text"> REMOVE FROM LIST</p></button>
+                : <button className="prj__button-add" onClick={() => this.props.onChangeStatus(this.props.data.id)}><p className="prj__button-add-text">ADD TO LIST</p></button> }
     </div>
     </div>
 
@@ -50,4 +45,17 @@ class Block extends Component {
     }
 }
 
-export default Block;
+function mapStateToProps(state) {
+  return { userData: state.userData  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onChangeStatus: (id) => {
+      dispatch({type: 'CHANGE_MYLIST_STATUS', payload: id})
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Block);
+

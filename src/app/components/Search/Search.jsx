@@ -6,21 +6,6 @@ import List from "../List/List";
 
 class Search extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  //
-  //     this.state = {
-  //         repositories: []
-  //     };
-  // }
-
-  componentDidMount() {
-      // fetch(`https://api.github.com/search/repositories?q=cms+language:javascript`)
-      //     .then(response => response.json())
-      //     .then(data => { this.setState({ repositories: data.items }); console.log('this state is ', this.state); });
-
-  }
-
   searchRequest = () => {
     this.props.onGetRepositories();
   };
@@ -41,13 +26,6 @@ class Search extends Component {
                   <button className="search__btn" onClick={this.searchRequest}><p className="search__btn-text">SEARCH</p></button>
                 </div>
               </div>
-                {/*<ul>*/}
-                    {/*{this.props.userData&&this.props.userData.map((el) =>*/}
-                        {/*<div key={el.id}>*/}
-                            {/*{el.name}*/}
-                        {/*</div>*/}
-                    {/*)}*/}
-                {/*</ul>*/}
                 <List></List>
             </div>
 
@@ -56,7 +34,7 @@ class Search extends Component {
 }
 
 function mapStateToProps(state) {
-  return { userData: state.userData.items  }
+  return { userData: state.userData  }
 }
 
 function mapDispatchToProps(dispatch) {

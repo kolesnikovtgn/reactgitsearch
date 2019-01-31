@@ -11,7 +11,6 @@ export const getRepositoriesAction = () => dispatch => axios(
         response.data.items.forEach(el => el.myList = false);
     dispatch({
         type: 'GET_REPOSITORIES',
-        payload: response.data,
+        payload: response.data.items,
     });
-});
-
+    });

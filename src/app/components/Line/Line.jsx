@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Line.scss';
 import star from '../../../images/star.png';
+import { connect } from  '../../../../node_modules/react-redux';
 
 class Line extends Component {
     render() {
@@ -8,8 +9,8 @@ class Line extends Component {
             <div className="project container-row">
                 <div className="project__checkimage">
                     <div className="project__checkimage-square">
-                        { this.props.data&&this.props.data.myList ? <div className="project__checkimage-image enable"> </div>
-                            : <div className="project__checkimage-image disable"> </div> }
+                        { this.props.data&&this.props.data.myList ? <div className="project__checkimage-image enable" onClick={() => this.props.onChangeStatus(this.props.data.id)}> </div>
+                            : <div className="project__checkimage-image disable" onClick={() => this.props.onChangeStatus(this.props.data.id)}> </div> }
                     </div>
                 </div>
                 <div className="project__text container-column">
@@ -42,4 +43,16 @@ class Line extends Component {
     }
 }
 
-export default Line;
+function mapStateToProps(state) {
+  return { userData: state.userData  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onChangeStatus: (id) => {
+      dispatch({type: 'CHANGE_MYLIST_STATUS', payload: id})
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Line);

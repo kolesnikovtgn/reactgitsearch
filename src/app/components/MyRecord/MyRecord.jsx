@@ -24,6 +24,7 @@ class MyRecord extends Component {
 
     render() {
         const isTypeProjects = this.state.isBlockType;
+        const { userData } = this.props;
 
         return (
             <div className="mainMyRecord">
@@ -36,8 +37,8 @@ class MyRecord extends Component {
                 </span>
                 </div>
                 <div className="mainMyRecord-projects">
-                    { isTypeProjects ? this.props.userData&&this.props.userData.filter(item => item.myList === true).map((el) => <Block key={el.id} data={el}></Block>)
-                        : this.props.userData&&this.props.userData.filter(item => item.myList === true).map((el) => <Line key={el.id} data={el}></Line>) }
+                    { isTypeProjects ? userData.filter(item => item.myList === true).map((el) => <Block key={el.id} data={el}></Block>)
+                        : userData.filter(item => item.myList === true).map((el) => <Line key={el.id} data={el}></Line>) }
                 </div>
             </div>
 

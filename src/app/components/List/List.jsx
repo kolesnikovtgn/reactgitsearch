@@ -22,6 +22,7 @@ class List extends Component {
 
     render() {
         const isTypeProjects = this.state.isBlockType;
+        const { userData } = this.props;
 
         return (
             <div className="mainList">
@@ -34,8 +35,8 @@ class List extends Component {
                 </span>
               </div>
             <div className="mainList-projects">
-              { isTypeProjects ? this.props.userData&&this.props.userData.map((el) => <Block key={el.id} data={el}></Block>)
-                : this.props.userData&&this.props.userData.map((el) => <Line key={el.id} data={el}></Line>) }
+              { isTypeProjects ? userData.map((el) => <Block key={el.id} data={el}></Block>)
+                : userData.map((el) => <Line key={el.id} data={el}></Line>) }
             </div>
             </div>
 
